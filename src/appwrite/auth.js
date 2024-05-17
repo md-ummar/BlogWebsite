@@ -8,7 +8,7 @@ export class AuthService {
   constructor() {
     this.client.setEndpoint(conf.appwriteUrl);
     this.client.setProject(conf.appwriteProjectId);
-    this.account = new Account(client);
+    this.account = new Account(this.client);
   }
 
   //signup page to create the account
@@ -41,7 +41,7 @@ export class AuthService {
   }
 
   //getUser to get details of the user::
-  async getUser() {
+  async getCurrentUser() {
     try {
       const user = await this.account.get();
     } catch (error) {
